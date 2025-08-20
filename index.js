@@ -14,8 +14,11 @@ mongoose.connect("mongodb+srv://earnimgtricks300:shreyash0%401234@cluster0.ws6db
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log("MongoDB connected"))
-.catch((err) => console.error("MongoDB connection error:", err));
+.then(() => console.log("MongoDB connected"));
+
+mongoose.connection.on('error', err => {
+  console.error('MongoDB connection error:', err);
+});
 
 // Feed schema and model
 const feedSchema = new mongoose.Schema({
