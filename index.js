@@ -27,6 +27,12 @@ const feedSchema = new mongoose.Schema({
 const Feed = mongoose.model("Feed", feedSchema);
 
 // Routes
+
+// Home route
+app.get('/', (req, res) => {
+  res.send('Welcome to the Interview Feed API!');
+});
+
 app.get("/api/feeds", async (req, res) => {
   const feeds = await Feed.find().sort({ createdAt: -1 });
   res.json(feeds);
